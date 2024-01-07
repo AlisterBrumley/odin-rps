@@ -13,8 +13,6 @@ h6 {
     color: rgb(147 161 161)
 }
 
-body {}
-
 .wrapper {
     display: flex;
     flex-direction: column;
