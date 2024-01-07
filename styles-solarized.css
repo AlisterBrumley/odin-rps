@@ -4,14 +4,6 @@ html {
     color: rgb(131 148 150)
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: rgb(147 161 161)
-}
 
 .wrapper {
     display: flex;
@@ -19,14 +11,41 @@ h6 {
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    border: 2px white solid;
 }
 
 .centerBox {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    gap: 16px;
     min-width: 20vw;
     min-height: 20vh;
-    border: 2px white solid;
+    border: 2px rgb(88 110 117) solid;
+    border-radius: 10px;
+    background-color: rgb(7 54 66);
+}
+
+.wanna {
+    font-size: 24pt;
+}
+
+.reset {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.reset button{
+    font-size: 18pt;
+    background-color: rgb(101 123 131);
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    width: 50%;
+    color: rgb(0 43 54);
+}
+
+.reset :hover{
+    background-color: rgb(88 110 117);
 }
