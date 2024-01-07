@@ -28,8 +28,8 @@ function playerPrompt() {
 }
 
 function totalWinCheck(wins) {
-    let winner = `you won ${wins} out of 5, and won the game!`;
-    let loser = `you only won ${wins} out of 5, and lost the game!`;
+    let winner = `you won ${wins} out of 5 rounds, and won the game!`;
+    let loser = `you only won ${wins} out of 5 rounds, and lost the game!`;
     if (wins >= 3) {
         return winner;
     } else {
