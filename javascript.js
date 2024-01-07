@@ -27,9 +27,17 @@ function playerPrompt() {
     }
 }
 
+function totalWinCheck(wins) {
+    if (wins >= 3) {
+        console.log(`you won ${wins} out of 5, and won the game!`)
+    } else {
+        console.log(`you only won ${wins} out of 5, and lost the game!`)
+    }
+}
 
 function rpsRound(playerSelection, computerSelection) {
     let result;
+    let countUp = 0;
     let win = `You Win! ${playerSelection} beats ${computerSelection}!`;
     let tie = "Tie!";
     let lose = `You Lose! ${computerSelection} beats ${playerSelection}!`;
@@ -46,7 +54,7 @@ function rpsRound(playerSelection, computerSelection) {
                     break;
                 case "scissors":
                     result = win;
-                    ++winCount;
+                    countUp++;
                     break;
             }
             break;
@@ -54,7 +62,7 @@ function rpsRound(playerSelection, computerSelection) {
             switch (computerSelection) {
                 case "rock":
                     result = win;
-                    winCount++;
+                    countUp++;
                     break;
                 case "paper":
                     result = tie;
@@ -71,7 +79,7 @@ function rpsRound(playerSelection, computerSelection) {
                     break;
                 case "paper":
                     result = win;
-                    winCount++;
+                    countUp++;
                     break;
                 case "scissors":
                     result = tie;
@@ -79,22 +87,25 @@ function rpsRound(playerSelection, computerSelection) {
             }
             break;
     }
-    // console.log(winCount)
-    return result
+    console.log(result);
+    return countUp;
 }
 
 function game() {
-    for (let cnt = 0; cnt < 5 ; cnt++)
-    {
+    let winCount = 0;
+
+    for (let cnt = 0; cnt < 5; cnt++) {
         let playerChoice = playerPrompt();
         let cpuChoice = getComputerChoice();
 
-        // console.log(playerChoice)
-        console.log(rpsRound(playerChoice, cpuChoice))
+        //console.log(playerChoice)
+        if (rpsRound(playerChoice, cpuChoice) === 1) {
+            winCount++;
+        }
+        //console.log(winCount)
     }
-    // console.log(winCount)
-
+    //console.log(winCount)
+    totalWinCheck(winCount);
 }
 
-let winCount = 0;
 game()
