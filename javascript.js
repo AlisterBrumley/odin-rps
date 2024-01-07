@@ -28,10 +28,12 @@ function playerPrompt() {
 }
 
 function totalWinCheck(wins) {
+    let winner = `you won ${wins} out of 5, and won the game!`;
+    let loser = `you only won ${wins} out of 5, and lost the game!`;
     if (wins >= 3) {
-        console.log(`you won ${wins} out of 5, and won the game!`)
+        return winner;
     } else {
-        console.log(`you only won ${wins} out of 5, and lost the game!`)
+        return loser;
     }
 }
 
@@ -105,7 +107,9 @@ function game() {
         //console.log(winCount)
     }
     //console.log(winCount)
-    totalWinCheck(winCount);
+    let result = totalWinCheck(winCount);
+    console.log(result)
+    alert(result);
 }
 
 game()
