@@ -21,7 +21,6 @@ html {
     gap: 16px;
     min-width: 20vw;
     min-height: 20vh;
-    border: 2px rgb(88 110 117) solid;
     border-radius: 10px;
     background-color: rgb(7 54 66);
 }
