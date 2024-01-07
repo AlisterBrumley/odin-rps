@@ -16,6 +16,18 @@ function getComputerChoice() {
     return choice;
 }
 
+function playerPrompt() {
+    let choice = prompt("Rock, paper, scissors?").toLowerCase();
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        return choice;
+    }
+    else {
+        alert("invalid choice! choose rock, paper or scissors!");
+        return playerPrompt();
+    }
+}
+
+
 function rpsRound(playerSelection, computerSelection) {
     let result;
     let win = `You Win! ${playerSelection} beats ${computerSelection}!`;
@@ -34,18 +46,22 @@ function rpsRound(playerSelection, computerSelection) {
                     break;
                 case "scissors":
                     result = win;
+                    ++winCount;
+                    break;
             }
             break;
         case "paper":
             switch (computerSelection) {
                 case "rock":
                     result = win;
+                    winCount++;
                     break;
                 case "paper":
                     result = tie;
                     break;
                 case "scissors":
                     result = lose;
+                    break;
             }
             break;
         case "scissors":
@@ -55,38 +71,30 @@ function rpsRound(playerSelection, computerSelection) {
                     break;
                 case "paper":
                     result = win;
+                    winCount++;
                     break;
                 case "scissors":
                     result = tie;
+                    break;
             }
             break;
     }
-
+    // console.log(winCount)
     return result
 }
 
-function playerPrompt() {
-    let choice = prompt("Rock, paper, scissors?").toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        return choice;
-    }
-    else {
-        alert("invalid choice! choose rock, paper or scissors!");
-        return playerPrompt();
-    }
-}
-
 function game() {
-
     for (let cnt = 0; cnt < 5 ; cnt++)
     {
         let playerChoice = playerPrompt();
         let cpuChoice = getComputerChoice();
 
-        console.log(playerChoice)
+        // console.log(playerChoice)
         console.log(rpsRound(playerChoice, cpuChoice))
     }
+    // console.log(winCount)
+
 }
 
-let winCount;
+let winCount = 0;
 game()
