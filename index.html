@@ -11,8 +11,20 @@
 <body>
     <div class="wrapper">
         <div class="centerBox">
-            <div class="wanna">Wanna play again?</div>
-            <div class="reset"><button onclick="game()">Reset</button></div>
+            <div class="btnBox">
+                <button class="playerButton" id="rock">Rock</button>
+                <button class="playerButton" id="paper">Paper</button>
+                <button class="playerButton" id="scissors">Scissors</button>
+            </div>
+            <div class="resultBox">
+                <div class="scoreBox">
+                    <span>Score:</span>
+                    <div>Player: <span class="playerScore">0</span></div>
+                    <div>Computer: <span class="computerScore">0</span></div>
+                </div>
+                <div class="winnerBox">
+                </div>
+            </div>
         </div>
     </div>
 </body>
