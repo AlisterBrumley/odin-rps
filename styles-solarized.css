@@ -17,34 +17,49 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 16px;
     min-width: 20vw;
     min-height: 20vh;
     border-radius: 10px;
     background-color: rgb(7 54 66);
+    padding: 0px 16px;
 }
 
-.wanna {
-    font-size: 24pt;
-}
-
-.reset {
+.btnBox {
     display: flex;
     justify-content: center;
-    width: 100%;
+    gap: 16px;
+    width: 80%;
+    border: 2px solid blue;
 }
 
-.reset button{
+.resultBox {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    border: 2px solid blue;
+}
+
+.scoreBox {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+}
+
+.winnerBox {
+    padding: 8px;
+}
+
+button {
     font-size: 18pt;
     background-color: rgb(101 123 131);
     border: none;
     border-radius: 10px;
     padding: 16px;
-    width: 50%;
     color: rgb(0 43 54);
 }
 
-.reset :hover{
+button:hover {
     background-color: rgb(88 110 117);
 }
