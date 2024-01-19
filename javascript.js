@@ -1,3 +1,35 @@
+// not in use
+function playerPrompt() {
+    let choice = prompt("Rock, paper, scissors?").toLowerCase();
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        return choice;
+    }
+    else {
+        alert("invalid choice! choose rock, paper or scissors!");
+        return playerPrompt();
+    }
+}
+
+// not in use
+function game() {
+    let winCount = 0;
+
+    for (let cnt = 0; cnt < 5; cnt++) {
+        let playerChoice = playerPrompt();
+        let cpuChoice = getComputerChoice();
+
+        //console.log(playerChoice)
+        if (rpsRound(playerChoice, cpuChoice) === 1) {
+            winCount++;
+        }
+        //console.log(winCount)
+    }
+    //console.log(winCount)
+    let result = totalWinCheck(winCount);
+    console.log(result)
+    alert(result);
+}
+
 function getComputerChoice() {
     let choice;
     let roll = Math.floor(Math.random() * 3);
@@ -14,17 +46,6 @@ function getComputerChoice() {
     }
 
     return choice;
-}
-
-function playerPrompt() {
-    let choice = prompt("Rock, paper, scissors?").toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        return choice;
-    }
-    else {
-        alert("invalid choice! choose rock, paper or scissors!");
-        return playerPrompt();
-    }
 }
 
 function totalWinCheck(wins) {
@@ -93,23 +114,13 @@ function rpsRound(playerSelection, computerSelection) {
     return countUp;
 }
 
-function game() {
-    let winCount = 0;
+// TODO
+/*
+    Think I need to addEventListener for clicks of buttons,
+    then i can use the name or textContent as a value as player choice
+    then run computer choice
+    then the switch compare to determine winner
+    then depending on outcome, update score and report to player
 
-    for (let cnt = 0; cnt < 5; cnt++) {
-        let playerChoice = playerPrompt();
-        let cpuChoice = getComputerChoice();
-
-        //console.log(playerChoice)
-        if (rpsRound(playerChoice, cpuChoice) === 1) {
-            winCount++;
-        }
-        //console.log(winCount)
-    }
-    //console.log(winCount)
-    let result = totalWinCheck(winCount);
-    console.log(result)
-    alert(result);
-}
-
-game()
+    i think the shopping list thing will help
+*/
