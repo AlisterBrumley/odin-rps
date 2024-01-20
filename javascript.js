@@ -1,35 +1,3 @@
-// not in use
-function playerPrompt() {
-    let choice = prompt("Rock, paper, scissors?").toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        return choice;
-    }
-    else {
-        alert("invalid choice! choose rock, paper or scissors!");
-        return playerPrompt();
-    }
-}
-
-// not in use
-function game() {
-    let winCount = 0;
-
-    for (let cnt = 0; cnt < 5; cnt++) {
-        let playerChoice = playerPrompt();
-        let cpuChoice = getComputerChoice();
-
-        //console.log(playerChoice)
-        if (rpsRound(playerChoice, cpuChoice) === 1) {
-            winCount++;
-        }
-        //console.log(winCount)
-    }
-    //console.log(winCount)
-    let result = totalWinCheck(winCount);
-    console.log(result)
-    alert(result);
-}
-
 function getComputerChoice() {
     let choice;
     let roll = Math.floor(Math.random() * 3);
@@ -48,22 +16,21 @@ function getComputerChoice() {
     return choice;
 }
 
-function totalWinCheck(wins) {
-    let winner = `you won ${wins} out of 5 rounds, and won the game!`;
-    let loser = `you only won ${wins} out of 5 rounds, and lost the game!`;
-    if (wins >= 3) {
-        return winner;
-    } else {
-        return loser;
+function totalWinCheck(scores) {
+    let winner = `you won 5 rounds, and won the game!`;
+    let loser = `the computer won 5 rounds, you lost the game!`;
+    if (scores[0] == 5) {
+        return winner
+    } else if (scores[1] == 5) {
+        return loser
     }
 }
 
 function rpsRound(playerSelection, computerSelection) {
     let result;
-    let countUp = 0;
-    let win = `You Win! ${playerSelection} beats ${computerSelection}!`;
-    let tie = "Tie!";
-    let lose = `You Lose! ${computerSelection} beats ${playerSelection}!`;
+    let win = "w";
+    let tie = "t";
+    let lose = "l";
 
     playerSelection = playerSelection.toLowerCase()
     switch (playerSelection) {
@@ -77,7 +44,6 @@ function rpsRound(playerSelection, computerSelection) {
                     break;
                 case "scissors":
                     result = win;
-                    countUp++;
                     break;
             }
             break;
@@ -85,7 +51,6 @@ function rpsRound(playerSelection, computerSelection) {
             switch (computerSelection) {
                 case "rock":
                     result = win;
-                    countUp++;
                     break;
                 case "paper":
                     result = tie;
@@ -102,7 +67,6 @@ function rpsRound(playerSelection, computerSelection) {
                     break;
                 case "paper":
                     result = win;
-                    countUp++;
                     break;
                 case "scissors":
                     result = tie;
@@ -110,17 +74,46 @@ function rpsRound(playerSelection, computerSelection) {
             }
             break;
     }
-    console.log(result);
-    return countUp;
+    return result;
 }
 
-// TODO
-/*
-    Think I need to addEventListener for clicks of buttons,
-    then i can use the name or textContent as a value as player choice
-    then run computer choice
-    then the switch compare to determine winner
-    then depending on outcome, update score and report to player
+const playerButtons = document.querySelectorAll(".playerButton");
+const playerScore = document.querySelector(".playerScore")
+const computerScore = document.querySelector(".computerScore")
+const wBoxPlayerChoice = document.querySelector(".playerChoice")
+const wBoxComputerChoice = document.querySelector(".computerChoice")
+const wBoxResult = document.querySelector(".result")
+const totalWinBox = document.querySelector(".totalWinBox")
+const resetButton = document.querySelector(".resetButton")
 
-    i think the shopping list thing will help
-*/
+playerButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if (playerScore.textContent == 5 || computerScore.textContent == 5) {
+            return;
+        }
+
+        const playerChoice = button.id;
+        const computerChoice = getComputerChoice();
+        const result = rpsRound(playerChoice, computerChoice);
+
+        wBoxPlayerChoice.textContent = "You played " + playerChoice
+        wBoxComputerChoice.textContent = "Computer played " + computerChoice;
+
+        if (result === "w") {
+            playerScore.textContent++;
+            wBoxResult.textContent = "You win!";
+        } else if (result === "l") {
+            computerScore.textContent++;
+            wBoxResult.textContent = "You lose!";
+        } else {
+            wBoxResult.textContent = "Tie!";
+        };
+
+        const scores = [playerScore.textContent, computerScore.textContent]
+        totalWinBox.textContent = totalWinCheck(scores)
+    });
+});
+
+resetButton.addEventListener("click", () => {
+    location.reload();
+})
